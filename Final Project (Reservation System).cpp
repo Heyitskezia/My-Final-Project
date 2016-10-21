@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Final Project (Reservation System)
 // Name: Nathania Kezia Barakati
 // ID: 2001586331
@@ -41,3 +42,18 @@ class b
 
 
 
+=======
+// Final Project (Reservation System)
+// Name: Nathania Kezia
+// ID: 2001586331
+// Major/Batch: Computer Science / 2020
+
+
+#include <iostream>
+#icnlude <string>
+#include <conio.h>
+#include <cstdio>
+using namespace std;
+
+
+>>>>>>> 30acb45a371dec62cfe8466f89a076bd24928e25
