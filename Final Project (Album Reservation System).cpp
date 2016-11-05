@@ -94,18 +94,29 @@ int main()
 		{
 			string stitle, sartist, sgenre;
 			int syear;
-			cout << "\nInput Title : ";
-			cin >> stitle;
-			cout << "Input Artist : ";
-			cin >> sartist;
-			cout << "Input Genre : ";
-			cin >> sgenre;
-			cout << "Input Year : ";
-			cin >> syear;
+			cout<<"Input Title : ";
+			//cin.getline(stitle, sizeof(stitle));
+			fflush(stdin);
+            getline(cin, stitle);
+            
+			cout<<"Input Artist : ";
+			//cin.getline(sartist, sizeof(sartist));
+			fflush(stdin);
+			getline(cin, sartist);
+            
+			cout<<"Input Genre : ";
+			//cin.getline(sgenre, sizeof(sgenre));
+			fflush(stdin);
+			getline(cin, sgenre);
+            
+			cout<<"Input Year : ";
+            fflush(stdin);
+			cin>>syear;
 			
 			//salbum[totalalbum]();
 			salbum[totalAlbum].setAlbum(stitle, sartist, sgenre, syear);
-			cout << "\nAlbum Created" << endl;			
+			cout<<"Album Created"<<endl;	
+            totalAlbum++;				
 		}
 		
 		else if(option == 2)
@@ -152,9 +163,19 @@ int main()
 			salbum[chooseAlbum].getAlbumInfo();
 		}
 		
+			else if(option == 5)
+		{
+			int chooseAlbum;
+			cout << "Input No Album : ";
+			cin >> chooseAlbum;
+			salbum[chooseAlbum - 1].deleteReservation();
+			cout << "Reservation Deleted" << endl;
+		}
+		
 		cout<<endl;
 		
-	} while (option < 6);
+	} 
+	 while (option > 0 && option < 6);
 	
 	cout<<"System finished"<<endl;
 	
