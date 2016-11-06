@@ -1,9 +1,8 @@
-// Final Project (Reservation System)
+// Final Project (Album Reservation System)
 // Name: Nathania Kezia Barakati
 // ID: 2001586331
 // Major/Batch: Computer Science / 2020
-// This program is for an album store worker to reserve an album that a customer has reserved.
-
+// This program is for an album store worker to reserve an album that a customer has reserved. Cancelation is not allowed.
 
 
 #include <iostream>
@@ -12,6 +11,7 @@ using namespace std;
 
 class Album
 {	
+	private:
 	string mtitle;
 	string martist;
 	string mgenre;
@@ -29,7 +29,8 @@ class Album
 		myear = 0;
 		mbatch = 0;
 	}
-	// To set and get album info
+	
+	// To set album info
 	void setAlbum(string stitle, string sartist, string sgenre, int syear)
 	{
 		mtitle = stitle;
@@ -37,13 +38,16 @@ class Album
 		mgenre = sgenre;
 		myear = syear;
 	}
+	
+	// To get album info
 	void getAlbumInfo()
 	{
-		cout << "Title: " << mtitle << endl;
-		cout << "Artist: " << martist << endl;
-		cout << "Genre: " << mgenre << endl;
-		cout << "Year: " << myear << endl;
+		cout << "Title : " << mtitle << endl;
+		cout << "Artist : " << martist << endl;
+		cout << "Genre : " << mgenre << endl;
+		cout << "Year : " << myear << endl;
 	}
+	
 	// To add reservation
 	void addReservation(string name)
 	{
@@ -58,13 +62,15 @@ class Album
 		}
 	}
 	
+	// To get reservation info
 	void getReservationInfo()
 	{
 		for(int i = 0 ; i < mbatch ; i++)
 		{
 			cout << " Slot number " << (i+1) << " is reserved for " <<morder [i] << endl;
 		}
-	}
+	}	
+	
 	int getReservationTotal()
 	{
 		return mbatch;
@@ -78,7 +84,7 @@ int main()
 	int option;
 	int totalAlbum;
 	
-	do // Go back to the main menu after finishing one of the option
+	do // Go back to the main menu after finishing one of the option (loop)
 	{
 		cout << "************************************************** ALBUM RESERVATION **************************************************";
 		cout << "\n\n\t\t\t\t\t\t\tMenu" << endl;
@@ -87,35 +93,30 @@ int main()
 		cout << "\n3. Reservation Status" << endl;
 		cout << "\n4. Show Album Information" << endl;
 		cout << "\n5. Exit" << endl;
-		cout << "\n\nPlease enter your choice : ";
+		cout << "\n\nPlease enter your choice ==>  ";
 		cin >> option;
 		
 		if(option == 1)
 		{
 			string stitle, sartist, sgenre;
 			int syear;
-			cout<<"Input Title : ";
-			//cin.getline(stitle, sizeof(stitle));
+			
+			cout << "\nInput Title : ";
 			fflush(stdin);
             getline(cin, stitle);
             
-			cout<<"Input Artist : ";
-			//cin.getline(sartist, sizeof(sartist));
-			fflush(stdin);
+			cout << "Input Artist : ";
 			getline(cin, sartist);
             
-			cout<<"Input Genre : ";
-			//cin.getline(sgenre, sizeof(sgenre));
-			fflush(stdin);
+			cout << "Input Genre : ";
 			getline(cin, sgenre);
             
-			cout<<"Input Year : ";
-            fflush(stdin);
-			cin>>syear;
+			cout << "Input Year : ";
+			cin >> syear;
 			
 			//salbum[totalalbum]();
 			salbum[totalAlbum].setAlbum(stitle, sartist, sgenre, syear);
-			cout<<"Album Created"<<endl;	
+			cout << "Album Created" << endl;	
             totalAlbum++;				
 		}
 		
@@ -131,7 +132,7 @@ int main()
 			
 			if((totalReservation + salbum[chooseAlbum - 1].getReservationTotal()) > 50)
 			{
-				cout<<"We only have 50 slot."<<endl;
+				cout << "We only have 50 slot." << endl;
 			}
 			else
 			{
@@ -158,40 +159,17 @@ int main()
 		else if(option == 4)
 		{
 			int chooseAlbum;
-			cout << "Input Album number: ";
-			cin >> chooseAlbum;
-			salbum[chooseAlbum].getAlbumInfo();
-		}
-		
-			else if(option == 5)
-		{
-			int chooseAlbum;
 			cout << "Input No Album : ";
 			cin >> chooseAlbum;
-			salbum[chooseAlbum - 1].deleteReservation();
-			cout << "Reservation Deleted" << endl;
+			salbum[chooseAlbum - 1].getAlbumInfo();
 		}
 		
-		cout<<endl;
+		cout << endl;
 		
 	} 
-	 while (option > 0 && option < 6);
+	 while (option > 0 && option < 5);
 	
-	cout<<"System finished"<<endl;
+	cout << "System finished" << endl;
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
